@@ -13,5 +13,5 @@ public class DarkSkyHandler {
         String template = "https://api.darksky.net/forecast/b8734c431dad0952dc6172d47370a235/" + latitude + "," + longitude + "?units=si";
         return restTemplate.getForObject(template, Forecast.class);
     }
-    
+
 }
