@@ -22,7 +22,7 @@ public class CacheManager extends Thread {
                     .collect(Collectors.toList());
             removeList.stream().forEach(n -> cache.removeElement(n));
             try {
-                Thread.sleep(60*1000);
+                Thread.sleep(60*1000L);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 return;
