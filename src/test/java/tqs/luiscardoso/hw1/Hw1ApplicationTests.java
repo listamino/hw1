@@ -9,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.HashMap;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -41,7 +39,7 @@ public class Hw1ApplicationTests {
         cache.add(mock_forecast);
         assertEquals(cache.size(), curr_size + 1);
         cache.removeElement(mock_forecast);
-        assertEquals(cache.size(), 0);
+        assertEquals(0,cache.size());
     }
 
     @Test
@@ -49,7 +47,7 @@ public class Hw1ApplicationTests {
         cache.add(mock_forecast);
         cache.add(mock_forecast);
         cache.clear();
-        assertEquals(cache.size(), 0);
+        assertEquals(0, cache.size());
     }
 
 
@@ -59,7 +57,7 @@ public class Hw1ApplicationTests {
         mock_forecast.setLongitude(0);
         cache.add(mock_forecast);
         cache.add(mock_forecast);
-        assertEquals(cache.size(), 1);
+        assertEquals(1,cache.size());
     }
 
     @Test
@@ -67,14 +65,14 @@ public class Hw1ApplicationTests {
         mock_forecast.setLongitude(0);
         mock_forecast.setLatitude(0);
         cache.add(mock_forecast);
-        assertEquals(mock_forecast, cache.getForecast(0,0));
+        assertEquals(cache.getForecast(0,0), mock_forecast);
     }
 
     @Test
     public void elementIsDeletedAfterTTL() {
         cache.add(mock_forecast, 12*60 + System.currentTimeMillis() / 1000L);
         cache.getCm().checkElements();
-        assertEquals(cache.size(), 0);
+        assertEquals(0, cache.size());
     }
 
 

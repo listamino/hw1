@@ -34,7 +34,6 @@ public class CacheManager extends Thread {
         List<Forecast> removeList = forecasts.keySet().stream()
                 .filter(forecast -> forecasts.get(forecast) + time_to_live > System.currentTimeMillis() / 1000L )
                 .collect(Collectors.toList());
-        System.out.println(removeList);
         removeList.stream().forEach(n -> cache.removeElement(n));
     }
 }
