@@ -12,6 +12,7 @@ public class Cache {
     public Cache() {
         forecasts = new HashMap<>();
         CacheManager cm = new CacheManager(forecasts, this);
+        cm.start();
     }
 
     public Forecast getForecast(double latitude, double longitude) {
@@ -24,15 +25,6 @@ public class Cache {
         Forecast forecast = DarkSkyHandler.getForecast(latitude, longitude);
         forecasts.put(forecast, System.currentTimeMillis() / 1000L);
         return forecast;
-    }
-
-    public void removeElement(double latitude, double longitude) {
-        Optional<Forecast> match = forecasts.keySet().stream()
-                .filter(forecast -> forecast.getLatitude() == latitude && forecast.getLongitude() == longitude)
-                .findFirst();
-        if (match.isPresent()) {
-            forecasts.remove(match.get());
-        }
     }
 
     public void removeElement(Forecast forecast) {

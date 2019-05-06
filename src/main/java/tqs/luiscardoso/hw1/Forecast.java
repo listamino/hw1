@@ -3,7 +3,8 @@ package tqs.luiscardoso.hw1;
 
 public class Forecast {
 
-    private double latitude, longitude;
+    private double latitude;
+    private double longitude;
     private Daily daily;
 
     public double getLatitude() {

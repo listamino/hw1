@@ -2,7 +2,11 @@ package tqs.luiscardoso.hw1;
 
 public class Weather {
     private String summary;
-    private double temperatureHigh, temperatureLow, precipProbability, humidity, pressure;
+    private double temperatureHigh;
+    private double temperatureLow;
+    private double precipProbability;
+    private double humidity;
+    private double pressure;
 
     public String getSummary() {
         return summary;

@@ -4,6 +4,9 @@ import org.springframework.web.client.RestTemplate;
 
 public class DarkSkyHandler {
 
+    private DarkSkyHandler() {
+        throw new IllegalStateException("Utility Class");
+    }
     private static RestTemplate restTemplate = new RestTemplate();
 
     public static Forecast getForecast(double latitude, double longitude) {

@@ -15,6 +15,7 @@ public class CacheManager extends Thread {
         this.cache = cache;
     }
 
+    @Override
     public void run() {
         while (true) {
             List<Forecast> removeList = forecasts.keySet().stream()
