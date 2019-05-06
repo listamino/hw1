@@ -14,8 +14,7 @@ public class ForecastController {
     @Autowired
     private Cache cache;
 
-    //TODO: add regex
-    @GetMapping("/forecast/{latitude},{longitude}")
+    @GetMapping("/forecast/{latitude:-?\\d+(?:\\.\\d+)?},{longitude:-?\\d+(?:\\.\\d+)?}")
     public Forecast forecast(@PathVariable double latitude, @PathVariable double longitude) {
         return cache.getForecast(latitude, longitude);
     }
