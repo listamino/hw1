@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather app</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="form">
+        <h1>Weather forecast</h1>
+        <form>
+            <label for="latitude">Latitude</label>
+            <input id="latitude" type="text" value="40.629695">
+            </br>
+        </br>
+            <label for="longitude">Longitude</label>
+            <input id="longitude" type="text" value="-8.651575">
+            </br>
+        </br>
+        </form>
+        <button onclick="getForecast()">Get Forecast</button>
+    </div>
+    <div id="forecast">
+    </div>
+</body>
+</html>
