@@ -8,10 +8,11 @@ import java.util.*;
 public class Cache {
 
     private Map<Forecast, Long> forecasts;
+    private CacheManager cm;
 
     public Cache() {
         forecasts = new HashMap<>();
-        CacheManager cm = new CacheManager(forecasts, this);
+        cm = new CacheManager(forecasts, this, 10*60L);
         cm.start();
     }
 
@@ -23,11 +24,35 @@ public class Cache {
             return match.get();
         }
         Forecast forecast = DarkSkyHandler.getForecast(latitude, longitude);
-        forecasts.put(forecast, System.currentTimeMillis() / 1000L);
+        this.add(forecast);
         return forecast;
     }
 
     public void removeElement(Forecast forecast) {
         forecasts.remove(forecast);
+    }
+
+    public CacheManager getCm() {
+        return cm;
+    }
+
+    public void add(Forecast forecast) {
+        if (!forecasts.keySet().contains(forecast)) {
+            forecasts.put(forecast, System.currentTimeMillis() / 1000L);
+        }
+    }
+
+    public void add(Forecast forecast, long time_since_insertion) {
+        if (!forecasts.keySet().contains(forecast)) {
+            forecasts.put(forecast, time_since_insertion);
+        }
+    }
+
+    public int size() {
+        return forecasts.size();
+    }
+
+    public void clear() {
+        forecasts.clear();
     }
 }
